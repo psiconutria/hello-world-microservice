@@ -3,6 +3,7 @@ name: Deploy Hello World Microservice
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -23,6 +24,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Log in to Amazon ECR
+        id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build and Push Docker Image
