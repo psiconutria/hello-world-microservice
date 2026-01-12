@@ -10,6 +10,7 @@ resource "aws_ecs_task_definition" "hello_world" {
   network_mode             = "awsvpc"
   cpu                      = "256"
   memory                   = "512"
+  force_new_deployment = true
 
   container_definitions = jsonencode([
     {
