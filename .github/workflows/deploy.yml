@@ -29,7 +29,8 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          IMAGE_URI="${{ steps.login-ecr.outputs.registry }}/hello-world-service:latest"
+          IMAGE_TAG=${{ github.sha }}
+          IMAGE_URI="***.dkr.ecr.us-east-1.amazonaws.com/hello-world-service:${IMAGE_TAG}"
           docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
 
