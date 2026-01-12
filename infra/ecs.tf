@@ -14,7 +14,7 @@ resource "aws_ecs_task_definition" "hello_world" {
   container_definitions = jsonencode([
     {
       name      = "hello-world"
-      image     = "${aws_ecr_repository.hello_world.repository_url}:latest"
+      image = "${aws_ecr_repository.hello_world.repository_url}:${var.image_tag}"
       essential = true
       portMappings = [{
         containerPort = 3000
