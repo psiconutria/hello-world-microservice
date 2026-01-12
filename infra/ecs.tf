@@ -10,7 +10,6 @@ resource "aws_ecs_task_definition" "hello_world" {
   network_mode             = "awsvpc"
   cpu                      = "256"
   memory                   = "512"
-  force_new_deployment = true
 
   container_definitions = jsonencode([
     {
@@ -31,6 +30,7 @@ resource "aws_ecs_service" "hello_world" {
   task_definition = aws_ecs_task_definition.hello_world.arn
   desired_count   = 1
   launch_type     = "FARGATE"
+  force_new_deployment = true
 
   network_configuration {
     subnets = [
