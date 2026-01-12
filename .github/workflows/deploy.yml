@@ -31,7 +31,7 @@ jobs:
         shell: bash
         run: |
           IMAGE_TAG="${{ github.sha }}"
-          IMAGE_URI="***.dkr.ecr.us-east-1.amazonaws.com/hello-world-service:${IMAGE_TAG}"
+          IMAGE_URI="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-service:${IMAGE_TAG}"
           echo "Building image: $IMAGE_URI"
           docker build -t "$IMAGE_URI" .
           docker push "$IMAGE_URI"
